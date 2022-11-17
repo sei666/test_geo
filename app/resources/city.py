@@ -50,6 +50,6 @@ class FindTheNearestApi(Resource):
         args = request.args
         latitude = args['latitude']
         longitude = args["longitude"]
-        cities = City.objects(pointLocation__near=[float(latitude), float(longitude)])
-        citiesJson = json.loads(cities.to_json())[:2]
+        cities = City.objects(pointLocation__near=[float(latitude), float(longitude)])[:2]
+        citiesJson = json.loads(cities.to_json())
         return jsonify(citiesJson)
